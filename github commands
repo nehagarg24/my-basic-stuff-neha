@@ -1,0 +1,19 @@
+•	Create new branch - git checkout -b one
+	•	Fetch new code - git fetch upstream master
+	•	Rebase the branch - git rebase upstream/master
+	•	git push origin CIM-4079   
+	•	git fetch origin master
+	•	git rebase origin/master
+	•	$ git fetch upstream master
+	•	$ git rebase upstream/master
+	•	$ git add .
+	•	$ git commit -m "Rebasing"
+	•	$ git push -f origin PI-17956
+	•	Push an existing repository from the command line
+	•	git remote add origin git@github.com:Neha1234garg/springRestFulApi.git
+	•	git branch -M main/master
+	•	git push -u origin main/master
+	•	git remote add origin https://<token>@github.com/nehagarg24/eureka-server.git
+	•	git push https://<token>@github.com/nehagarg24/eureka-server.git
+	•	git remote remove origin
+	•	rm -rf /Users/neha.garg/Documents/codebase/spring-boot-github-jenkins-docker/.git    
