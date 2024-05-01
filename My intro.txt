@@ -1,0 +1,98 @@
+As a Software Development Engineer at AppDirect:
+
+- My primary responsibilities involve collaborating with the development team on various aspects of the Update Subscription module. This includes implementing day-to-day enhancements to ensure the smooth functioning of the module.
+
+- Within the billing subscription team, I have actively contributed to the development and end-to-end testing of critical features such as the Contract Extension and Cancellation Job Module. This involves not only writing code but also ensuring the reliability and functionality of these components through comprehensive testing.
+
+- Troubleshooting and debugging are integral parts of my role, and I proficiently use tools like Splunk for monitoring and forwarding alerts. This ensures that any issues are promptly identified and addressed to maintain the overall system integrity.
+
+- Additionally, I've taken on leadership responsibilities by leading a team of 4-5 members, guiding and collaborating with them to address product issues effectively. This involves coordinating efforts to resolve technical challenges and providing support to ensure the continued functionality of the software.
+
+- In terms of system improvements, I worked on developing a microservice aimed at centralizing technical documents from Confluence. This initiative facilitates easy access to information within the team. 
+
+- Moreover, I contributed to the codebase by adding localization translation keys, enhancing the software's adaptability to different languages and regions.
+
+- Another notable aspect of my work is engaging in weekly partner calls to address and resolve product queries. This requires a deep understanding of the product to provide comprehensive and accurate information to partners.
+
+- To address production issues, I created DB migration scripts, resulting in a significant reduction in processing time. This proactive approach not only minimizes the occurrence of issues but also improves the overall efficiency of the system.
+
+- In summary, my role as a Software Development Engineer at AppDirect involves a diverse set of responsibilities ranging from coding and testing to troubleshooting, leadership, and process improvement, all aimed at ensuring the optimal performance and reliability of the software systems I work on.
+
+
+
+
+
+
+
+
+Currently My day 2 days work involve:
+
+- Integration with Third-party APIs, where we handled authentication and data exchange, and managed errors and edge cases.
+
+Telstra Tbill:
+	- Handling Authentication: OAuth 2.0 client credentials flow to obtain an access token from Tbill's authentication server
+	- Data Exchange: we send a request to Tbill's payment endpoint with details such as the amount, currency, and payment method. Tbill processes the payment and returns a response indicating the status of the transaction.
+	- Error Handling:  If the API returns a 4xx or 5xx status code(client or server error) handle with error messages to the user and implement retry mechanisms for transient errors to ensure robustness.
+	- Edge Cases: If the user's payment method fails due to insufficient funds or an expired card, providing informative error messages to the user, and offering alternative payment options.
+
+
+- Microservices Architecture: I worked on developing a microservice aimed at centralizing technical documents from Confluence. This initiative facilitates easy access to information within the team.
+
+-  Performance Optimization: Optimized the performance of a backend application by identifying performance bottlenecks, implemented improvements.
+
+	- Database Optimization: We optimize database queries by adding 
+		- appropriate indexes(Identify frequently queried columns), 
+		- rewriting inefficient queries(such as reducing the number of joins, avoiding subqueries, or optimizing conditions in WHERE clauses), 
+	- Code Refactoring: optimizing algorithms, minimizing object creation, or improving error handling.
+	- Caching Strategies: Implemented Ehcache or Redis to cache frequently accessed data and reduce database load.
+	- Monitoring and Alerting: use tools like Splunk for monitoring and forwarding alerts. This allows us to detect any performance regressions and proactively address them.
+	
+- Continuous Integration and Deployment (CI/CD)
+
+
+
+
+
+
+Development lifecycle
+
+Code review
+Tech doc review and creation (convertProduct requirement into technical)
+Backwards compatibility FF
+
+
+
+
+
+
+	⁃	Technology Stack: modern technologies and frameworks to develop scalable and robust software solutions. Their expertise in areas such as cloud computing, DevOps, IoT, and artificial intelligence aligns well with my interests and skill set.
+	⁃	diverse clientele and Impactful Projects
+	•	Career Growth Opportunities:
+
+
+
+
+
+
+Project that I have created => Cloud Vendor Information service
+
+We have build our cloud vendor API in which we have built 3 layers (Controller, Business/Service , Database/Repository)
+Then this DB layer is responsible to interact with DB and Controller layer is responsible to interact with external world, with help of GET, PUT, POST, DELETE
+All these CRUD operations we have implemented.
+And service layer is responsible to hold the business logic.
+We have also implemented Custom Exception handling
+And also created custom response handling.
+We have written Test cases for all 3 layers
+
+
+
+
+
+
+
+
+
+
+
+
+
