@@ -1,0 +1,137 @@
+RestAPI, sometimes called restful APIs
+
+	REST means, Representational state transfer 
+	API means, Application programming interface
+
+	REST is not a set of protocols or a standard rather it is a set of architectural constraints that an API developer can implement in variety of ways.
+
+	REST API s work over HTTP, so whatever operations HTTP supports REST also supports that.
+
+	It delivers information in JSON, XML and many other formats.
+
+SpringBoot,
+	- Create Standalone, production ready application
+	- with embedded servers, tomcat, Jetty 
+	- Provides dependacies
+	- provide production environment features: Health checks, metrics
+	- No configuartion files needed , XML configuration file not required here.
+	- We use SpringBoot Annotations here: 
+		- @SpringBootApplication : @EnableAutoConfiguration + @ComponentScan + @configuration
+		- @Entity : The call having this will be stored into DB.
+		- @Id : This will be the ID field in DB.
+		- @Autowired : Inject bean dependancy
+		- @Override : Override any method
+		- @RestController : indicate SB app, that this is the controller class
+		- @RequestMapping : indicate the context path
+		- @GetMapping, @PostMapping, @PutMapping, @DeleteMapping
+		- @ControllerAdvice :  is an annotation used to define a global exception handler for Spring MVC controllers.
+		- @ExceptionHandler : is an annotation used to define methods that handle specific types of exceptions within a @ControllerAdvice class.
+
+Unit Testing : 
+	JUNIT : 
+		- Unit Testing framework for Java and its frameworks.
+		- Used for Developer side testing on the JVM. Example: Junit5
+	AssertJ :
+		- We use assertion to specify how my program should behave, developer should know when you give some kind of input to a method then what you would get in return.
+		- Improves test code readibility.
+	Mockito :
+		- Lets you write test with clean and simple API.
+		- Readable and produce clean verification errors.
+	H2 Database :
+		- In-memory database, springboot can auto configure embedded H2 databse.
+		- When you need to test each piece of code individually, when it is dependednt on another layers interaction, We mock certain response and when there is DB interaction required we don't use real time DB rather we use in memory H2 DBs.
+	spring-boot-starter-test : 
+		- It already includes JUnit, Mockito, AssertJ dependancy
+		- you just need to add H2DB depeandancy in POM.xml file
+	application.yaml:
+		- Then in order to setup Loal in memory DB, you need to provide sample DB deatils in application.yaml file.
+	@DataJpaTest : 
+		- Put it on Test folder repository file, to let spring know that it should use embedded in memory DB for data related activities.
+
+Swagger : 
+	Used mainly for API Documentation:
+		- Swagger takes the manual work out of API Documentation.
+		- It helps with generating, visualizng and maintiang API docs.
+		- Standardized API docs.
+		- Fosters collaboration
+		- https://swagger.io/
+
+Actuator : health/beans/and more
+
+Data Persistence : Data persistence in Java Maven projects refers to the ability of an application to store and retrieve data in a way that ensures the data remains available even after the application exits or the system restarts. 
+	- It uses JpaRepository or CrudRepository in repository package
+	- Then it use CommandLineRunner to execute code upon application startup, e.g., to initialize using public void run(String... args) {} method.
+	- You can achieve data persistence effectively by leveraging Spring Data JPA repositories and integrating data access operations directly within your application's business logic.
+
+DevTools : Whenever we do any changes in the application it should automatic restart 
+
+Logging
+	- Standard logging using SLF4J
+	- Dependancy: spring-boot-starter-logging
+	- Log levels:
+		- INFO
+		- WARN
+		- ERROR
+		- DEBUG and TRACE (should be enable manually by application.properties OR application.yaml file)
+
+Logback : When we need to send our logs not just to console but we need to store the log data to a file, email, databse so that case we can't just use application.properties file. 
+
+Service registration and discovery : Service registration and discovery are fundamental concepts in microservices architecture that enable efficient communication and interaction between multiple microservices within a distributed system.
+	- Service Registration : 
+		- When a microservice starts up, it registers itself with a service registry (e.g., Eureka) using 
+			- @EnableEurekaClient
+		- This registration typically includes IP address and port and service name, version, health status
+			- spring.application.name = product-service
+			- server.port = 8081
+			- eureka.client.service-url.defaultZone = http://localhost:8761/eureka/
+
+	- Service Discovery : Other microservices that need to interact with a specific service can dynamically discover its location and details by querying the service registry. Service discovery allows services to locate and communicate with each other without needing to know their exact network addresses in advance.
+		 - @GetMapping(value="/{userId}")
+			public Users getUser(@PathVariable("userId") String userId)
+			{
+				Users userOne = new Users(userId, "User Name " + userId);
+
+				Posts posts = restTemplate.getForObject("http://localhost:8888/post/1",Posts.class);
+				
+				userOne.setPost(posts);
+
+				return userOne;
+			}
+
+Microservices API Gateway using Spring Cloud :
+	 - Entry Point : It serves as a single entry point for clients to access various microservices within a system.
+	- Routing and Aggregation : The API Gateway routes incoming requests to the appropriate microservices and can aggregate multiple microservices' responses into a single response.
+	- Protocol Translation : It can translate between different protocols, allowing clients to use a single protocol while microservices use different ones internally.
+	- Security and Cross-Cutting Concerns : Handles common concerns like authentication, authorization, rate limiting, logging, and monitoring.
+	- Example:
+		- spring.application.name=api-gateway
+		- spring.cloud.gateway.routes[0].id=users-ms
+		- spring.cloud.gateway.routes[0].uri=lb://users-ms
+		- spring.cloud.gateway.routes[0].predicates[0]=Path=/user/**
+
+Resilience4J : is a lightweight fault tolerance library designed for functional 				programming. Introduced in Spring cloud in Java 8.
+				<dependency>
+					<groupId>org.springframework.cloud</groupId>
+					<artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
+				</dependency>
+	- Core modules of Resilience4J
+		- Circuit breaker : resilience4j-circuitbreaker
+		- Retry : resilience4j-retry
+		- Rate limiter : resilience4j-ratelimiter
+		- Bulkhead : resilience4j-bulkhead
+		- Time limiter : resilience4j-timelimiter
+		- Cache : resilience4j-cache
+	- Fault tolerance is the property that enables the system to continue operating properly in the event of the failure of one or more faults within some of its components.
+	- Circuit breaker, identifies the services which are not running and will execte the available fallback method.
+		- @CircuitBreaker(name=USER_SERVICE, fallbackMethod = "userServiceFallBack")
+
+
+
+mongodb://localhost:27017
+microservice
+http://localhost:8999/
+http://localhost:8082/user/1
+http://localhost:8082/actuator/health
+http://localhost:8888/post/1
+http://localhost:9000/user/1
+http://localhost:8080/notifications/1
